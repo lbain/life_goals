@@ -4,6 +4,7 @@ class CreateGoals < ActiveRecord::Migration
       t.string :title
       t.datetime :due_date
       t.string :schedule_yaml
+      t.references :category, index: true
 
       t.timestamps
     end

@@ -2,6 +2,9 @@ class Goal < ActiveRecord::Base
 
   include IceCube
 
+  belongs_to :category
+
+
   def self.from_params(params)
     goal = Goal.new
     goal.schedule_from_param(params)
