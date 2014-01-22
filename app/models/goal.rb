@@ -3,6 +3,7 @@ class Goal < ActiveRecord::Base
   include IceCube
 
   has_and_belongs_to_many :categories
+  accepts_nested_attributes_for :categories
 
 
   def self.from_params(params)
@@ -22,5 +23,9 @@ class Goal < ActiveRecord::Base
 
   def schedule
     Schedule.from_yaml(schedule_yaml) if schedule_yaml.present?
+  end
+
+  def pretty_categories
+    categories.map(&:title).to_sentence
   end
 end

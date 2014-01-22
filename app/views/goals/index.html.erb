@@ -5,6 +5,7 @@
     <tr>
       <th>Title</th>
       <th>Due date</th>
+      <th>Categories</th>
       <th>Schedule</th>
       <th></th>
       <th></th>
@@ -17,6 +18,7 @@
       <tr>
         <td><%= goal.title %></td>
         <td><%= goal.due_date %></td>
+        <td><%= goal.pretty_categories %></td>
         <td><%= goal.schedule.to_s %></td>
         <td><%= link_to 'Show', goal %></td>
         <td><%= link_to 'Edit', edit_goal_path(goal) %></td>

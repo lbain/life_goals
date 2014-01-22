@@ -1,4 +1,4 @@
-<%= form_for(@goal) do |f| %>
+<%= simple_form_for(@goal) do |f| %>
   <% if @goal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
@@ -16,11 +16,8 @@
     <%= f.text_field :title %>
   </div>
 
-  <%= f.collection_select(:category_id,
-                        Category.all,
-                        :id,
-                        :title,
-                        { :prompt => 'Select category' }) %>
+  <%= f.association :categories, collection: Category.all, as: :check_boxes %>
+
   <div class="field">
     <%= f.label :due_date %><br>
     <%= f.datetime_select :due_date %>
