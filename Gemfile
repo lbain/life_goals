@@ -27,6 +27,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.0.1'
 
+gem 'haml'
+
 gem 'ice_cube'
 gem 'recurring_select', git: 'https://github.com/GetJobber/recurring_select'
 
