@@ -7,7 +7,7 @@ class Goal < ActiveRecord::Base
 
   def self.from_params(params)
     goal = Goal.new
-    goal.schedule_from_param(params)
+    goal.schedule_from_param(params) if params[:schedule_yaml]
     params.delete(:schedule_yaml)
     goal.update(params)
     goal

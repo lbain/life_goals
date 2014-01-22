@@ -70,7 +70,7 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:title, :due_date, :schedule_yaml)
+      params.require(:goal).permit(:title, :due_date, :schedule_yaml).delete_if { |key, value| value == 'null' }
     end
 
     def repeat_params
