@@ -70,7 +70,7 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:title, :due_date, :schedule_yaml)
+      params.require(:category).permit(:title)
     end
 
     def repeat_params
