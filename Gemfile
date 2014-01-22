@@ -28,7 +28,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 
 gem 'ice_cube'
-gem 'recurring_select'
+gem 'recurring_select', git: 'https://github.com/GetJobber/recurring_select'
 
 gem 'pry'
 gem 'pry-debugger'

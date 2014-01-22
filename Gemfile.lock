@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/GetJobber/recurring_select
+  revision: 1e1c9a2cfbbadda332e880aea9dc28b0fa700395
+  specs:
+    recurring_select (1.2.1.rc3)
+      coffee-rails (>= 3.1)
+      ice_cube (>= 0.11)
+      jquery-rails (>= 3.0)
+      rails (>= 3.2)
+      sass-rails (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -91,12 +102,6 @@ GEM
     rake (10.1.1)
     rdoc (4.1.1)
       json (~> 1.4)
-    recurring_select (1.2.0)
-      coffee-rails (>= 3.1)
-      ice_cube (>= 0.8)
-      jquery-rails
-      rails (>= 3.1)
-      sass-rails (>= 3.1)
     sass (3.2.13)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -142,7 +147,7 @@ DEPENDENCIES
   pry-debugger
   pry-rails
   rails (= 4.0.0.rc1)
-  recurring_select
+  recurring_select!
   sass-rails (~> 4.0.0.rc1)
   sdoc
   sqlite3
