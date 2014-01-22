@@ -2,7 +2,7 @@ class Goal < ActiveRecord::Base
 
   include IceCube
 
-  belongs_to :category
+  has_and_belongs_to_many :categories
 
 
   def self.from_params(params)
