@@ -31,7 +31,7 @@ gem 'haml'
 
 gem 'simple_form'
 
-gem 'ice_cube'
+gem 'ice_cube', git: 'https://github.com/seejohnrun/ice_cube'
 gem 'recurring_select', git: 'https://github.com/GetJobber/recurring_select'
 
 gem 'pry'

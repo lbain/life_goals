@@ -9,6 +9,12 @@ GIT
       rails (>= 3.2)
       sass-rails (>= 3.1)
 
+GIT
+  remote: https://github.com/seejohnrun/ice_cube
+  revision: 89dee70ddb85486fc83fac1eca3c054ccf54cb9d
+  specs:
+    ice_cube (0.11.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -61,7 +67,6 @@ GEM
       tilt
     hike (1.2.3)
     i18n (0.6.9)
-    ice_cube (0.11.1)
     jbuilder (1.0.2)
       activesupport (>= 3.0.0)
     jquery-rails (3.0.4)
@@ -144,7 +149,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   haml
-  ice_cube
+  ice_cube!
   jbuilder (~> 1.0.1)
   jquery-rails
   pry
