@@ -3,8 +3,7 @@ class CreateTodos < ActiveRecord::Migration
     create_table :todos do |t|
       t.belongs_to :goal
       t.boolean :done, default: false
-      t.string :due_date
-      t.string :datetime
+      t.datetime :due_date
 
       t.timestamps
     end

@@ -37,8 +37,7 @@ ActiveRecord::Schema.define(version: 20140125033447) do
   create_table "todos", force: true do |t|
     t.integer  "goal_id"
     t.boolean  "done",       default: false
-    t.string   "due_date"
-    t.string   "datetime"
+    t.datetime "due_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
