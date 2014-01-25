@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  goal_id: 
+  done: 
+  due_date: MyString
+  datetime: MyString
+
+two:
+  goal_id: 
+  done: 
+  due_date: MyString
+  datetime: MyString
