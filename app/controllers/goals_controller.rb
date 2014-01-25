@@ -15,7 +15,6 @@ class GoalsController < ApplicationController
   # GET /goals/new
   def new
     @goal = Goal.new
-    @repeat = Repeat.new
   end
 
   # GET /goals/1/edit
