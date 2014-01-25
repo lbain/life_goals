@@ -12,15 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.input :title %>
   </div>
 
   <%= f.association :categories, collection: Category.all, as: :check_boxes %>
 
   <div class="field">
-    <%= f.label :due_date %><br>
-    <%= f.datetime_select :due_date %>
+    <%= f.input :due_date, as: :date, start_year: Date.today.year, end_year: Date.today.year + 50, include_blank: true %>
   </div>
   <div class="field">
     <%= f.select_recurring :schedule_yaml %>

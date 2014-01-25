@@ -10,8 +10,26 @@ class Goal < ActiveRecord::Base
     goal = Goal.new
     goal.schedule_from_param(params) if params[:schedule_yaml]
     params.delete(:schedule_yaml)
+    goal.set_precision(params)
+    params = format_due_date_params(params)
     goal.update(params)
     goal
+  end
+
+  def set_precision(params)
+    date = {"year" => params["due_date(1i)"],
+            "month" => params["due_date(2i)"],
+            "day" => params["due_date(3i)"] }
+    date.each do |key, value|
+      self.precision = key if value.present?
+    end
+  end
+
+  def self.format_due_date_params(params)
+    [2,3].each do |num|
+      params["due_date(#{num}i)"] = '1' if params["due_date(#{num}i)"].empty?
+    end
+    params
   end
 
   def schedule_from_param(params)
@@ -34,7 +52,24 @@ class Goal < ActiveRecord::Base
     Schedule.from_yaml(schedule_yaml) if schedule_yaml.present?
   end
 
+  ### TODO: MOVE TO DECORATOR
+
   def pretty_categories
     categories.map(&:title).to_sentence
+  end
+
+  def due_date_strf
+    case self.precision
+    when 'year'
+      '%Y'
+    when 'month'
+      '%B %Y'
+    when 'day'
+      '%B %d, %Y'
+    end
+  end
+
+  def pretty_due_date
+    self.due_date.strftime(due_date_strf)
   end
 end
