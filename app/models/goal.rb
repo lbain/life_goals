@@ -19,6 +19,7 @@ class Goal < ActiveRecord::Base
     schedule = Schedule.new()
     schedule.add_recurrence_rule(rule)
     self.schedule_yaml = schedule.to_yaml
+    self.next_due = self.schedule.first
   end
 
   def schedule

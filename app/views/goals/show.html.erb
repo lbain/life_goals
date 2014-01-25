@@ -20,5 +20,11 @@
   <%= @goal.schedule.to_s %>
 </p>
 
+<%- binding.pry %>
+<p>
+  <strong>Next due:</strong>
+  <%= @goal.next_due.to_s %>
+</p>
+
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
 <%= link_to 'Back', goals_path %>
