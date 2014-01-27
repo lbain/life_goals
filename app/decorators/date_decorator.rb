@@ -14,4 +14,8 @@ class DateDecorator < Draper::Decorator
     source.strftime('%B %d')
   end
 
+  def date
+    source.strftime('%Y-%m-%e')
+  end
+
 end

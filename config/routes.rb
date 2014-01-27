@@ -3,7 +3,7 @@ LifeGoals::Application.routes.draw do
   resources :goals
   resources :repeats
   resources :categories
-  resources :todos, only: [:index] do
+  resources :todos, only: [:index, :update] do
     collection do
       get :schedule
     end

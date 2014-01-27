@@ -1,29 +1,39 @@
 - @week.each do |date|
-  %div{class: "#{date.day_classy}"}
+  %div{class: "day #{date.day_classy}"}
     .title
       .day_name
         = date.day_of_week
-      .date
+      .date{date: "#{date.date}"}
         = date.day_month
-    .tasks{style: "height:50px"}
+    .tasks{style: "min-height:50px"}
       - @week_todos.where(due_date: date.beginning_of_day..date.end_of_day).each do |todo|
         - todo = todo.decorate
-        %div{class: "todo #{todo.category_classy}"}
-          .title
-            = todo.title
-%table
-  %tr
-    %th
-      Title
-    %th
-      Due date
-    %th
-      Category
+        = render partial: 'todo', locals: {todo: todo}
+.tasks
   - @month_todos.each do |todo|
-    %tr
-      %td
-        =todo.title
-      %td
-        =todo.due_date
-      %td
-        =todo.categories
+    = render partial: 'todo', locals: {todo: todo}
+
+:javascript
+  $(function() {
+    $( ".tasks" ).sortable({
+      connectWith: ".tasks",
+      stop : function (e) {
+        function save_todo(todo, day) {
+          var id = todo.getAttribute('id')
+          var date = $(day).find('.date')[0].getAttribute('date')
+          $.ajax({
+            url: "/todos/"+id,
+            type: 'PUT',
+            data: {
+              date: date
+            },
+            success: function(data) {
+              // alert('saved');
+            }
+          });
+        }
+        debugger
+        save_todo($(e.toElement).closest('.todo')[0], $(e.toElement).closest('.day'))
+      }
+    }).disableSelection();
+  });

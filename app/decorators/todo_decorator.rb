@@ -2,6 +2,8 @@ class TodoDecorator < Draper::Decorator
 
   decorates_association :goal
 
+  delegate :id
+
   def title
     goal.title
   end
