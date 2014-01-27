@@ -18,8 +18,8 @@
       <tr>
         <td><%= goal.title %></td>
         <td><%= goal.due_date %></td>
-        <td><%= goal.pretty_categories %></td>
-        <td><%= goal.schedule.to_s %></td>
+        <td><%= goal.categories %></td>
+        <td><%= goal.schedule %></td>
         <td><%= link_to 'Show', goal %></td>
         <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
         <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>

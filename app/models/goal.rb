@@ -57,28 +57,6 @@ class Goal < ActiveRecord::Base
     Schedule.from_yaml(schedule_yaml) if schedule_yaml.present?
   end
 
-  ### TODO: MOVE TO DECORATOR
-
-  def pretty_categories
-    categories.map(&:title).to_sentence
-  end
-
-  def due_date_strf
-    case self.precision
-    when 'year'
-      '%Y'
-    when 'month'
-      '%B %Y'
-    when 'day'
-      '%B %d, %Y'
-    end
-  end
-
-  def pretty_due_date
-    return unless self.due_date.present?
-    self.due_date.strftime(due_date_strf)
-  end
-
   private
 
   def generate_todos_from_schedule

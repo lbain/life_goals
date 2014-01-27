@@ -4,12 +4,13 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
+    @goals = GoalDecorator.decorate_collection(Goal.all)
   end
 
   # GET /goals/1
   # GET /goals/1.json
   def show
+    @goal = @goal.decorate
   end
 
   # GET /goals/new
@@ -28,6 +29,7 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
+        @goal = @goal.decorate
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
         format.json { render action: 'show', status: :created, location: @goal }
       else

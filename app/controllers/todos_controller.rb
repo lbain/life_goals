@@ -10,6 +10,7 @@ class TodosController < ApplicationController
     @week_todos = Todo.where(due_date: @week).order(:due_date)
     @month_todos = Todo.where(due_date: Date.today.at_end_of_week..5.weeks.from_now).order(:due_date)
     @week = ::DateDecorator.decorate_collection(@week)
+    @month_todos = ::TodoDecorator.decorate_collection(@month_todos)
   end
 
 end

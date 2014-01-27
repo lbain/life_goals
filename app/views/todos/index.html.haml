@@ -9,8 +9,8 @@
   - @todos.each do |todo|
     %tr
       %td
-        =todo.goal.title
+        = todo.goal.title
       %td
-        =todo.pretty_due_date
+        = todo.due_date
       %td
-        =todo.goal.pretty_categories
+        = todo.goal.categories

@@ -5,9 +5,12 @@
         = date.day_of_week
       .date
         = date.day_month
-    .tasks
+    .tasks{style: "height:50px"}
       - @week_todos.where(due_date: date.beginning_of_day..date.end_of_day).each do |todo|
-        =todo.goal.title
+        - todo = todo.decorate
+        %div{class: "todo #{todo.category_classy}"}
+          .title
+            = todo.title
 %table
   %tr
     %th
@@ -19,8 +22,8 @@
   - @month_todos.each do |todo|
     %tr
       %td
-        =todo.goal.title
+        =todo.title
       %td
-        =todo.pretty_due_date
+        =todo.due_date
       %td
-        =todo.goal.pretty_categories
+        =todo.categories

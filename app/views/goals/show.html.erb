@@ -7,22 +7,22 @@
 
 <p>
   <strong>Due date:</strong>
-  <%= @goal.pretty_due_date %>
+  <%= @goal.due_date %>
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @goal.pretty_categories %>
+  <%= @goal.categories %>
 </p>
 
 <p>
   <strong>Schedule:</strong>
-  <%= @goal.schedule.to_s %>
+  <%= @goal.schedule %>
 </p>
 
 <p>
   <strong>Next due:</strong>
-  <%= @goal.next_due.to_s %>
+  <%= @goal.next_due %>
 </p>
 
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
