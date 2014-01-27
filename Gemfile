@@ -34,6 +34,8 @@ gem 'simple_form'
 gem 'ice_cube', git: 'https://github.com/seejohnrun/ice_cube'
 gem 'recurring_select', git: 'https://github.com/GetJobber/recurring_select'
 
+gem 'draper', '~> 1.3'
+
 gem 'pry'
 gem 'pry-debugger'
 gem 'pry-rails'
