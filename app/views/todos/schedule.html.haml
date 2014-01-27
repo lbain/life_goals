@@ -1,0 +1,26 @@
+- @week.each do |date|
+  %div{class: "#{date.day_classy}"}
+    .title
+      .day_name
+        = date.day_of_week
+      .date
+        = date.day_month
+    .tasks
+      - @week_todos.where(due_date: date.beginning_of_day..date.end_of_day).each do |todo|
+        =todo.goal.title
+%table
+  %tr
+    %th
+      Title
+    %th
+      Due date
+    %th
+      Category
+  - @month_todos.each do |todo|
+    %tr
+      %td
+        =todo.goal.title
+      %td
+        =todo.pretty_due_date
+      %td
+        =todo.goal.pretty_categories

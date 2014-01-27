@@ -3,7 +3,11 @@ LifeGoals::Application.routes.draw do
   resources :goals
   resources :repeats
   resources :categories
-  resources :todos, only: [:index]
+  resources :todos, only: [:index] do
+    collection do
+      get :schedule
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
