@@ -12,28 +12,3 @@
 .tasks
   - @month_tasks.each do |task|
     = render partial: 'task', locals: {task: task}
-
-:javascript
-  $(function() {
-    $( ".tasks" ).sortable({
-      connectWith: ".tasks",
-      stop : function (e) {
-        function save_task(task, day) {
-          var id = task.getAttribute('id')
-          var date = $(day).find('.date')[0].getAttribute('date')
-          $.ajax({
-            url: "/tasks/"+id,
-            type: 'PUT',
-            data: {
-              date: date
-            },
-            success: function(data) {
-              // alert('saved');
-            }
-          });
-        }
-        debugger
-        save_task($(e.toElement).closest('.task')[0], $(e.toElement).closest('.day'))
-      }
-    }).disableSelection();
-  });

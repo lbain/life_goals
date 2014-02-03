@@ -18,7 +18,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task.due_date = Date.parse(params[:date])
+    @task.update(task_params)
     @task.save
     render nothing: true
   end
@@ -27,6 +27,10 @@ class TasksController < ApplicationController
 
   def set_task
     @task = Task.find(params[:id])
+  end
+
+  def task_params
+    params.require(:task).delete_if { |key, value| value == 'null' }
   end
 
 end
