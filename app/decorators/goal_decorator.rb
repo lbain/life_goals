@@ -1,5 +1,7 @@
 class GoalDecorator < Draper::Decorator
 
+  delegate :done
+
   def due_date
     return unless source.due_date.present?
     source.due_date.strftime(due_date_strf)

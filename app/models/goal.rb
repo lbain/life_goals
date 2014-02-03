@@ -59,6 +59,10 @@ class Goal < ActiveRecord::Base
     tasks.done
   end
 
+  def needs_doing?
+    due_date.present? and not done
+  end
+
   def schedule
     Schedule.from_yaml(schedule_yaml) if schedule_yaml.present?
   end
