@@ -27,6 +27,7 @@ class GoalDecorator < Draper::Decorator
   end
 
   def next_due
+    return unless source.next_due.present?
     source.next_due.strftime('%B %d, %Y')
   end
 
