@@ -31,6 +31,10 @@ class GoalDecorator < Draper::Decorator
     source.next_due.strftime('%B %d, %Y')
   end
 
+  def num_done_tasks
+    source.done_tasks.count
+  end
+
   private
 
   def due_date_strf

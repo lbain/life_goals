@@ -1,6 +1,6 @@
 %div{class: "task #{task.category_classy}", id: "#{task.id}"}
   .title
-    = task.title
+    = link_to task.title, task.goal
   = simple_form_for task.source do |f|
     = f.input :done
     = f.input :due_date, as: :hidden

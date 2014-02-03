@@ -25,5 +25,10 @@
   <%= @goal.next_due %>
 </p>
 
+<p>
+  <strong>Done tasks:</strong>
+  <%= @goal.num_done_tasks %>
+</p>
+
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
 <%= link_to 'Back', goals_path %>

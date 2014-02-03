@@ -5,6 +5,8 @@ class Goal < ActiveRecord::Base
   has_and_belongs_to_many :categories
   accepts_nested_attributes_for :categories
 
+  has_many :tasks
+
 
   def self.from_params(params)
     goal = Goal.new
@@ -51,6 +53,10 @@ class Goal < ActiveRecord::Base
 
   def generate_tasks
     self.schedule.present? ? generate_tasks_from_schedule : generate_tasks_from_due_date
+  end
+
+  def done_tasks
+    tasks.done
   end
 
   def schedule
