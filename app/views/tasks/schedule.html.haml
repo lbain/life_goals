@@ -6,23 +6,23 @@
       .date{date: "#{date.date}"}
         = date.day_month
     .tasks{style: "min-height:50px"}
-      - @week_todos.where(due_date: date.beginning_of_day..date.end_of_day).each do |todo|
-        - todo = todo.decorate
-        = render partial: 'todo', locals: {todo: todo}
+      - @week_tasks.where(due_date: date.beginning_of_day..date.end_of_day).each do |task|
+        - task = task.decorate
+        = render partial: 'task', locals: {task: task}
 .tasks
-  - @month_todos.each do |todo|
-    = render partial: 'todo', locals: {todo: todo}
+  - @month_tasks.each do |task|
+    = render partial: 'task', locals: {task: task}
 
 :javascript
   $(function() {
     $( ".tasks" ).sortable({
       connectWith: ".tasks",
       stop : function (e) {
-        function save_todo(todo, day) {
-          var id = todo.getAttribute('id')
+        function save_task(task, day) {
+          var id = task.getAttribute('id')
           var date = $(day).find('.date')[0].getAttribute('date')
           $.ajax({
-            url: "/todos/"+id,
+            url: "/tasks/"+id,
             type: 'PUT',
             data: {
               date: date
@@ -33,7 +33,7 @@
           });
         }
         debugger
-        save_todo($(e.toElement).closest('.todo')[0], $(e.toElement).closest('.day'))
+        save_task($(e.toElement).closest('.task')[0], $(e.toElement).closest('.day'))
       }
     }).disableSelection();
   });

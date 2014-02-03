@@ -1,4 +1,4 @@
-class TodoDecorator < Draper::Decorator
+class TaskDecorator < Draper::Decorator
 
   decorates_association :goal
 

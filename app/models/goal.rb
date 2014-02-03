@@ -13,7 +13,7 @@ class Goal < ActiveRecord::Base
     goal.set_precision(params)
     params = format_due_date_params(params)
     goal.update(params)
-    goal.generate_todos
+    goal.generate_tasks
     goal
   end
 
@@ -49,8 +49,8 @@ class Goal < ActiveRecord::Base
     end
   end
 
-  def generate_todos
-    self.schedule.present? ? generate_todos_from_schedule : generate_todos_from_due_date
+  def generate_tasks
+    self.schedule.present? ? generate_tasks_from_schedule : generate_tasks_from_due_date
   end
 
   def schedule
@@ -59,21 +59,21 @@ class Goal < ActiveRecord::Base
 
   private
 
-  def generate_todos_from_schedule
+  def generate_tasks_from_schedule
     now = Time.now
-    schedule.send(:enumerate_occurrences, now, now + 4.weeks).each do |todo_date|
-      todo = Todo.new
-      todo.due_date = todo_date.to_datetime
-      todo.goal_id = self.id
-      todo.save
+    schedule.send(:enumerate_occurrences, now, now + 4.weeks).each do |task_date|
+      task = Task.new
+      task.due_date = task_date.to_datetime
+      task.goal_id = self.id
+      task.save
     end
   end
 
-  def generate_todos_from_due_date
-    todo = Todo.new
-    todo.due_date = self.due_date
-    todo.goal = self
-    todo.save
+  def generate_tasks_from_due_date
+    task = Task.new
+    task.due_date = self.due_date
+    task.goal = self
+    task.save
   end
 
 end

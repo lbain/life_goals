@@ -6,11 +6,11 @@
       Due date
     %th
       Category
-  - @todos.each do |todo|
+  - @tasks.each do |task|
     %tr
       %td
-        = todo.goal.title
+        = task.goal.title
       %td
-        = todo.due_date
+        = task.due_date
       %td
-        = todo.goal.categories
+        = task.goal.categories
