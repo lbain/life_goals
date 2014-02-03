@@ -1,0 +1,18 @@
+= simple_form_for(@goal) do |f|
+  - if @goal.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@goal.errors.count, "error")
+        prohibited this goal from being saved:
+      %ul
+        - @goal.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.input :title
+  = f.association :categories, collection: Category.all, as: :check_boxes
+  .field
+    = f.input :due_date, as: :date, start_year: Date.today.year, end_year: Date.today.year + 50, include_blank: true
+  .field
+    = f.select_recurring :schedule_yaml
+  .actions
+    = f.submit

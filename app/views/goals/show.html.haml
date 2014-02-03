@@ -1,0 +1,25 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @goal.title
+%p
+  %strong Done:
+  = @goal.done
+%p
+  %strong Due date:
+  = @goal.due_date
+%p
+  %strong Category:
+  = @goal.categories
+%p
+  %strong Schedule:
+  = @goal.schedule
+%p
+  %strong Next due:
+  = @goal.next_due
+%p
+  %strong Done tasks:
+  = @goal.num_done_tasks
+= link_to 'Edit', edit_goal_path(@goal)
+|
+\#{link_to 'Back', goals_path}
